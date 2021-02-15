@@ -1,0 +1,175 @@
+<html>
+<head>
+<h1 style="background-color:rgb(200, 151, 233);"> College Registration Form </h1>
+
+<style>
+    h1 {text-align: center;}
+#main
+{
+width:650px;
+height:550px;
+border:1px solid black;
+margin:auto;
+background:#a9cc2c;
+box-shadow:20px 10px 10px 1px grey;
+}
+body {background-color: #397ee4;}
+#row
+{
+width:99%;
+height:40px;
+border:1px solid #F3F3F3;
+}
+.col
+{
+width:32%;
+height:89%;
+border:1px solid #F3F3F3;
+float:left;
+margin-left:2px;
+}
+input
+{
+height:30px;
+width:200px;
+border-radius:2px;
+}
+input{type=submit}
+{
+width:100px;
+}
+input:hover{border:1px solid red}
+input:hover{background:gray}
+input{font-size:25px}
+.r
+{
+width:10px;
+height:15px;
+font-size:10px;
+}
+</style>
+<script type="text/javascript">
+function chkblnk(eid,errid)
+{
+var x=document.getElementById(eid).value;
+if(x=="")
+{
+document.getElementById(errid).innerHTML="pls fill this field";
+}
+else
+{
+document.getElementById(errid).innerHTML="";
+}
+}
+
+function chkAplha(event,err)
+{
+if(!((event.which>=65 && event.which<=90) || (event.which>=97 && event.which<=122) || event.which==0 || event.which==8))
+{
+document.getElementById(err).innerHTML="invalid name format";
+return false;
+}
+}
+
+function chkeid()
+{
+var e=document.getElementById("e").value;
+var atpos=e.indexOf("@");
+var dotpos=e.lastIndexOf(".");
+if(atpos<4 || dotpos<atpos+3)
+{
+document.getElementById("error2").innerHTML="invalid email";
+}
+else
+{
+document.getElementById("error2").innerHTML="";
+}
+
+}
+</script>
+</head>
+<body>
+<div id="main">
+<h2 align="center">Registration Page</h2>
+<div id="row" style="color:black">
+<div class="col">Your First Name</div>
+<div class="col"><input type="text" id="fn"  onkeypress="return chkAplha(event,'error')" onblur="chkblnk('fn','error')"/></div>
+<div class="col" id="error" style="color:rgb(141, 29, 29)"></div>
+</div>
+<div id="row" style="color:black">
+<div class="col">Your Last Name</div>
+<div class="col"><input type="text" id="ln" onblur="chkblnk('ln','error1')"/></div>
+<div class="col" id="error1" style="color:red"></div>
+</div>
+<div id="row" style="color:black">
+<div class="col">Your Email id</div>
+<div class="col">
+<input type="text" id="e" onblur="chkeid()"/></div>
+<div class="col" id="error2" style="color:red"></div>
+</div>
+<div id="row" style="color:black">
+<div class="col">Your Password</div>
+<div class="col"><input type="password" id="p"  onblur="chkblnk('p','error3')"/></div>
+<div class="col" id="error3" style="color:red"></div>
+</div>
+<div id="row" style="color:black">
+<div class="col">Confirmation Pass</div>
+<div class="col"><input type="password" id="cp"  onblur="chkblnk('cp','error4')"/></div>
+<div class="col" style="color:red" id="error4"></div>
+</div>
+<div id="row" style="color:black">
+     <div class="col">Occupation </div>
+    <div class="col"><input type="text" id="cp"  onblur="chkblnk('cp','error6')"/></div>
+    <div class="col" style="color:red" id="error4"></div>
+</div>
+<div id="row" style="color:black">
+<div class="col">Your Home Address</div>
+<div class="col">
+<textarea id="adds" onblur="chkblnk('adds','error5')"></textarea></div>
+<div class="col" style="color:red" id="error5"></div>
+</div>
+
+</div>
+</body>
+<script type="text/javascript">
+function validate_email(field,alerttxt)
+{
+    with (field)
+    {
+        apos=value.indexOf("@");
+        dotpos=value.lastIndexOf(".");
+        if (apos<1||dotpos-apos<2)
+        {
+            alert(alerttxt);
+            return false;
+        }
+        else 
+        {
+            return true;
+        }
+    }
+}
+function validate_form(thisform)
+    {
+        with (thisform)
+        {
+            if (validate_email(email,"Not a valid e-mail address!")==false)
+            {
+                email.focus();
+                return false;
+            }
+        }
+    }
+    </script>
+    </head>
+    <body>
+        <form action="submit.html" onsubmit="return validate_form(this);" method="post">
+            Email: <input type="text" name="email" size="30">
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
+
+
+</body>
+</html>
